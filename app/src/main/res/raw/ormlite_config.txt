@@ -1,0 +1,83 @@
+#
+# generated on 2016/12/04 12:27:19
+#
+# --table-start--
+dataClass=com.zoubelu.gymbuddy.domain.TrainingDay
+tableName=trainingday
+# --table-fields-start--
+# --field-start--
+fieldName=id
+generatedId=true
+# --field-end--
+# --field-start--
+fieldName=date
+# --field-end--
+# --field-start--
+fieldName=exercises
+foreignCollection=true
+# --field-end--
+# --field-start--
+fieldName=comment
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
+dataClass=com.zoubelu.gymbuddy.domain.MuscleParts
+tableName=muscleparts
+# --table-fields-start--
+# --field-start--
+fieldName=id
+generatedId=true
+# --field-end--
+# --field-start--
+fieldName=text
+unique=true
+# --field-end--
+# --field-start--
+fieldName=exercises
+foreignCollection=true
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
+dataClass=com.zoubelu.gymbuddy.domain.Exercise
+tableName=exercise
+# --table-fields-start--
+# --field-start--
+fieldName=id
+generatedId=true
+# --field-end--
+# --field-start--
+fieldName=name
+unique=true
+# --field-end--
+# --field-start--
+fieldName=reps
+# --field-end--
+# --field-start--
+fieldName=sets
+# --field-end--
+# --field-start--
+fieldName=weight
+# --field-end--
+# --field-start--
+fieldName=muscleParts
+columnName=muscleParts_foreign_id
+canBeNull=false
+foreign=true
+foreignAutoRefresh=true
+foreignAutoCreate=true
+# --field-end--
+# --field-start--
+fieldName=trainingDay
+columnName=trainingday_foreign_id
+canBeNull=false
+foreign=true
+foreignAutoRefresh=true
+foreignAutoCreate=true
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################

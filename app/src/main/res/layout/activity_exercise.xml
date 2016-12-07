@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/add_exercise_relative_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.zoubelu.gymbuddy.activity.TrainingDayActivity">
+
+    <!--NAZEV-->
+    <TextView
+        android:id="@+id/name_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/fab_margin"
+        android:text="@string/name_text"
+        android:textSize="30dp" />
+
+    <EditText
+        android:id="@+id/exercise_name_text_value"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/fab_margin"
+        android:layout_toRightOf="@+id/name_textView" />
+
+    <!--SVALOVE PARTIE-->
+    <TextView
+        android:id="@+id/muscle_group_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/name_textView"
+        android:layout_margin="@dimen/fab_margin"
+        android:gravity="center"
+        android:text="@string/muscle_groups_text"
+        android:textSize="20dp" />
+
+    <LinearLayout
+        android:id="@+id/checkbox_liner_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        android:layout_below="@id/muscle_group_textView"
+        android:layout_margin="@dimen/fab_margin"
+        android:orientation="horizontal">
+
+    </LinearLayout>
+
+    <!--SETS-->
+    <TextView
+        android:id="@+id/sets_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/checkbox_liner_layout"
+        android:layout_margin="@dimen/fab_margin"
+        android:text="@string/sets_text"
+        android:textSize="20dp" />
+
+
+    <EditText
+        android:id="@+id/sets_text_value"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/checkbox_liner_layout"
+        android:layout_margin="@dimen/fab_margin"
+        android:layout_toRightOf="@+id/sets_textView"
+        android:inputType="number" />
+
+    <!--REPS-->
+    <TextView
+        android:id="@+id/reps_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/sets_textView"
+        android:layout_margin="@dimen/fab_margin"
+        android:text="@string/reps_text"
+        android:textSize="20dp" />
+
+    <EditText
+        android:id="@+id/reps_text_value"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/sets_textView"
+        android:layout_margin="@dimen/fab_margin"
+        android:layout_toRightOf="@+id/reps_textView"
+        android:inputType="number" />
+
+    <!--VAHA-->
+    <TextView
+        android:id="@+id/weight_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/reps_textView"
+        android:layout_margin="@dimen/fab_margin"
+        android:text="@string/weight_text"
+        android:textSize="20dp" />
+
+    <EditText
+        android:id="@+id/weight_text_value"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/reps_textView"
+        android:layout_margin="@dimen/fab_margin"
+        android:layout_toRightOf="@+id/weight_textView"
+        android:inputType="number" />
+
+    <ImageButton
+        android:id="@+id/save_exercise_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/muscle_group_textView"
+        android:layout_toRightOf="@+id/muscle_group_textView"
+        app:srcCompat="?android:attr/textSelectHandle" />
+
+</RelativeLayout>
