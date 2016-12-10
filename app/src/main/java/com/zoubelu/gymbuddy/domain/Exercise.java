@@ -3,11 +3,13 @@ package com.zoubelu.gymbuddy.domain;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
+import java.io.Serializable;
+
 /**
  * Created by root on 3.12.16.
  */
 @DatabaseTable
-public class Exercise {
+public class Exercise implements Serializable{
     @DatabaseField(generatedId = true)
     private Integer id;
     @DatabaseField(unique = true)
@@ -18,8 +20,6 @@ public class Exercise {
     private Integer sets;
     @DatabaseField
     private Integer weight;
-    @DatabaseField(foreign = true, columnName = "muscleParts_foreign_id", canBeNull = false ,foreignAutoCreate = true,foreignAutoRefresh = true)
-    private MuscleParts muscleParts;
     @DatabaseField(foreign = true, columnName = "trainingday_foreign_id", canBeNull = false, foreignAutoCreate = true, foreignAutoRefresh = true)
     private TrainingDay trainingDay;
 
@@ -71,14 +71,6 @@ public class Exercise {
 
     public void setWeight(Integer weight) {
         this.weight = weight;
-    }
-
-    public MuscleParts getMuscleParts() {
-        return muscleParts;
-    }
-
-    public void setMuscleParts(MuscleParts muscleParts) {
-        this.muscleParts = muscleParts;
     }
 
     public TrainingDay getTrainingDay() {

@@ -18,4 +18,10 @@
     <string name="fri">PÁ</string>
     <string name="sat">SO</string>
     <string name="sun">NE</string>
+    <string name="sets_reps_text"><![CDATA[Sets & Reps]]></string>
+    <string name="delete_ex_text">Odstranit</string>
+    <string name="toolbar_text_strength">SILOVÉ</string>
+    <string name="toolbar_text_objem">OBJEMOVÉ</string>
+    <string name="toolbar_text_performance">VÝKON</string>
+    <string name="toolbar_text_endurance">VÝDRŽ</string>
 </resources>

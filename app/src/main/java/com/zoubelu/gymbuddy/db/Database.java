@@ -11,6 +11,7 @@ import com.j256.ormlite.table.TableUtils;
 import com.zoubelu.gymbuddy.R;
 import com.zoubelu.gymbuddy.domain.Exercise;
 import com.zoubelu.gymbuddy.domain.MuscleParts;
+import com.zoubelu.gymbuddy.domain.MusclePartsExercise;
 import com.zoubelu.gymbuddy.domain.TrainingDay;
 
 import java.sql.SQLException;
@@ -25,6 +26,7 @@ public class Database extends OrmLiteSqliteOpenHelper {
 
     private Dao<TrainingDay, Integer> trainingDayDao;
     private Dao<MuscleParts, Integer> musclePartsDao;
+    private Dao<MusclePartsExercise, Integer> mpeDao;
     private Dao<Exercise, Integer> exerciseDao;
     private SQLiteDatabase db;
 
@@ -39,6 +41,7 @@ public class Database extends OrmLiteSqliteOpenHelper {
             TableUtils.createTable(connectionSource, TrainingDay.class);
             TableUtils.createTable(connectionSource, Exercise.class);
             TableUtils.createTable(connectionSource, MuscleParts.class);
+            TableUtils.createTable(connectionSource, MusclePartsExercise.class);
             insertInitialData();
         } catch (Exception e) {
             Log.e(TAG, "Failed to create database tables.", e);
@@ -48,6 +51,7 @@ public class Database extends OrmLiteSqliteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase database, ConnectionSource connectionSource, int oldVersion, int newVersion) {
         Log.e(TAG, "Wanted to update the database but its not implemented.");
+        onCreate(database);
     }
 
     private void insertInitialData() {
@@ -60,7 +64,7 @@ public class Database extends OrmLiteSqliteOpenHelper {
             dao.create(new MuscleParts("Paže"));
             dao.create(new MuscleParts("Ramena"));
         } catch (SQLException e) {
-            Log.e(TAG,"Failed to create initial muscle parts data.");
+            Log.e(TAG, "Failed to create initial muscle parts data.");
         }
     }
 
@@ -84,4 +88,31 @@ public class Database extends OrmLiteSqliteOpenHelper {
         }
         return trainingDayDao;
     }
+
+    public Dao<MusclePartsExercise, Integer> getMPEDao() throws SQLException {
+        if (mpeDao == null) {
+            mpeDao = getDao(MusclePartsExercise.class);
+        }
+        return mpeDao;
+    }
+
+    public void purge() {
+        try {
+            TableUtils.clearTable(super.connectionSource, TrainingDay.class);
+            TableUtils.clearTable(super.connectionSource, Exercise.class);
+            TableUtils.clearTable(super.connectionSource, MuscleParts.class);
+            TableUtils.clearTable(super.connectionSource, MusclePartsExercise.class);
+            Dao dao = this.getMusclePartsDao();
+            dao.create(new MuscleParts("Hrudník"));
+            dao.create(new MuscleParts("Záda"));
+            dao.create(new MuscleParts("Nohy"));
+            dao.create(new MuscleParts("Břicho"));
+            dao.create(new MuscleParts("Paže"));
+            dao.create(new MuscleParts("Ramena"));
+        } catch (SQLException e) {
+            Log.e(TAG, "Failed to purge database." + e.getMessage());
+        }
+    }
+
+
 }

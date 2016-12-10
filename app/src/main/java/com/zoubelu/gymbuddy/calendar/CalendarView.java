@@ -39,11 +39,14 @@ public class CalendarView extends LinearLayout {
     // date format
     private String dateFormat;
 
+    private CalendarAdapter calendarAdapter;
     // current displayed month
     private Calendar currentDate = Calendar.getInstance();
 
     //event handling
     private EventHandler eventHandler = null;
+
+    private HashSet<Date> events;
 
     // internal components
     private LinearLayout header;
@@ -151,13 +154,14 @@ public class CalendarView extends LinearLayout {
      * Display dates correctly in grid
      */
     public void updateCalendar() {
-        updateCalendar(null);
+        updateCalendar(events);
     }
 
     /**
      * Display dates correctly in grid
      */
-    public void updateCalendar(HashSet<Date> events) {
+    public void updateCalendar(HashSet<Date> newEvents) {
+        this.events = newEvents;
         ArrayList<Date> cells = new ArrayList<>();
         Calendar calendar = (Calendar) currentDate.clone();
 
@@ -175,6 +179,7 @@ public class CalendarView extends LinearLayout {
         }
 
         // update grid
+//        calendarAdapter =
         grid.setAdapter(new CalendarAdapter(getContext(), cells, events));
 
         // update title
@@ -192,14 +197,14 @@ public class CalendarView extends LinearLayout {
 
     private class CalendarAdapter extends ArrayAdapter<Date> {
         // days with events
-        private HashSet<Date> eventDays;
+        private HashSet<Date> events;
 
         // for view inflation
         private LayoutInflater inflater;
 
         public CalendarAdapter(Context context, ArrayList<Date> days, HashSet<Date> eventDays) {
             super(context, R.layout.control_calendar_day, days);
-            this.eventDays = eventDays;
+            this.events = eventDays;
             inflater = LayoutInflater.from(context);
         }
 
@@ -221,8 +226,8 @@ public class CalendarView extends LinearLayout {
 
             // if this day has an event, specify event image
             view.setBackgroundResource(0);
-            if (eventDays != null) {
-                for (Date eventDate : eventDays) {
+            if (events != null) {
+                for (Date eventDate : events) {
                     if (eventDate.getDate() == day &&
                             eventDate.getMonth() == month &&
                             eventDate.getYear() == year) {
@@ -250,6 +255,10 @@ public class CalendarView extends LinearLayout {
             ((TextView) view).setText(String.valueOf(date.getDate()));
 
             return view;
+        }
+
+        public HashSet<Date> getEvenets() {
+            return events;
         }
     }
 

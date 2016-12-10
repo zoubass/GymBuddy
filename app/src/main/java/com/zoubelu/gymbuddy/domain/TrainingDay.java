@@ -1,24 +1,26 @@
 package com.zoubelu.gymbuddy.domain;
 
 import com.j256.ormlite.dao.ForeignCollection;
+import com.j256.ormlite.dao.LazyForeignCollection;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.field.ForeignCollectionField;
 import com.j256.ormlite.table.DatabaseTable;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collection;
 
 /**
  * Created by root on 3.12.16.
  */
 @DatabaseTable(tableName = "trainingday")
-public class TrainingDay implements Serializable{
+public class TrainingDay implements Serializable {
 
     @DatabaseField(generatedId = true)
     private Integer id;
     @DatabaseField
     private Long date;
-    @ForeignCollectionField
+    @ForeignCollectionField(eager = true)
     private ForeignCollection<Exercise> exercises;
     @DatabaseField(canBeNull = true)
     private String comment;
@@ -33,8 +35,6 @@ public class TrainingDay implements Serializable{
 
     public TrainingDay(Long date) {
         this.date = date;
-        //TODO: otestovat
-//        this.exercises = (ForeignCollection<Exercise>) new ArrayList<Exercise>();
     }
 
     public TrainingDay(Long date, ForeignCollection<Exercise> exercises, String comment) {

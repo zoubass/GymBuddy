@@ -6,61 +6,104 @@
     android:layout_height="match_parent"
     tools:context="com.zoubelu.gymbuddy.activity.TrainingDayActivity">
 
-    <ScrollView
-        android:id="@+id/scroll_view"
-        android:layout_width="fill_parent"
-        android:layout_height="250dp"
-        android:layout_weight="1"
-        android:scrollbars="none">
 
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:orientation="vertical">
+    <TableLayout
+        android:id="@+id/table_layout"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="@dimen/fab_margin"
+        android:background="@color/greyed_out">
+
+
+        <TableRow
+            android:id="@+id/add_exercise_row"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorAccent">
+
+            <TextView
+                android:id="@+id/textViewAddExercise"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/fab_margin"
+                android:layout_span="3"
+                android:gravity="center"
+                android:text="@string/add_exercise_text"
+                android:textAlignment="center" />
+
+            <ImageButton
+                android:id="@+id/add_exercise_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@android:drawable/ic_menu_add" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/header_row"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorAccent">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/fab_margin"
+                android:gravity="center"
+                android:text="@string/name_text"
+                android:textAlignment="center" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/fab_margin"
+                android:gravity="center"
+                android:text="@string/sets_reps_text"
+                android:textAlignment="center" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/fab_margin"
+                android:gravity="center"
+                android:text="@string/weight_text"
+                android:textAlignment="center" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/fab_margin"
+                android:gravity="center"
+                android:text="@string/delete_ex_text"
+                android:textAlignment="center" />
+        </TableRow>
+
+        <ScrollView
+            android:id="@+id/scroll_view"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_weight="1"
+            android:scrollbars="none">
 
             <TableLayout
                 android:id="@+id/training_day_table"
                 android:layout_width="match_parent"
-                android:layout_height="250dp"
+                android:layout_height="200dp"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:layout_margin="@dimen/fab_margin"
-                android:background="@color/greyed_out">
-            <!--TODO: udelat scrollable z rows a ne z cele tabulky-->
-                <TableRow
-                    android:id="@+id/add_exercise_row"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@color/colorAccent">
-
-                    <TextView
-                        android:id="@+id/textViewAddExercise"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_margin="@dimen/fab_margin"
-                        android:gravity="center"
-                        android:text="@string/add_exercise_text"
-                        android:textAlignment="center" />
-
-                    <ImageButton
-                        android:id="@+id/add_exercise_button"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        app:srcCompat="@android:drawable/ic_menu_add" />
-
-                </TableRow>
-
+                android:background="@color/niceBlue">
 
             </TableLayout>
-
-        </LinearLayout>
-    </ScrollView>
+        </ScrollView>
+    </TableLayout>
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/scroll_view"
+        android:layout_below="@+id/table_layout"
         android:layout_margin="@dimen/fab_margin"
         android:text="@string/training_style_text" />
 
@@ -68,7 +111,7 @@
         android:id="@+id/spinner"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/scroll_view"
+        android:layout_below="@+id/table_layout"
         android:layout_margin="@dimen/fab_margin"
         android:layout_toRightOf="@+id/textView2" />
 
@@ -79,5 +122,12 @@
         android:layout_margin="@dimen/fab_margin"
         android:hint="@string/add_comment_text" />
 
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@mipmap/ic_launcher"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/save_training_day_btn" />
 
 </RelativeLayout>
